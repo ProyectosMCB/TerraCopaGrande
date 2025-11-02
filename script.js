@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-
 // Loader animado antes de mostrar la web
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -51,53 +50,32 @@ window.addEventListener("load", () => {
   }, 1000);
 });
 
-// Menú lateral moderno
+// Menú lateral moderno (aunque está oculto, lo dejo por si lo reactivas)
 const menuBtn = document.getElementById("menu-btn");
 const sideMenu = document.getElementById("side-menu");
 
-menuBtn.addEventListener("click", () => {
-  menuBtn.classList.toggle("active");
-  sideMenu.classList.toggle("active");
-});
-
-// Cierra el menú al hacer clic en un enlace
-document.querySelectorAll(".side-menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    menuBtn.classList.remove("active");
-    sideMenu.classList.remove("active");
+if (menuBtn && sideMenu) {
+  menuBtn.addEventListener("click", () => {
+    menuBtn.classList.toggle("active");
+    sideMenu.classList.toggle("active");
   });
-});
 
+  // Cierra el menú al hacer clic en un enlace
+  document.querySelectorAll(".side-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuBtn.classList.remove("active");
+      sideMenu.classList.remove("active");
+    });
+  });
+}
+
+// Toggle para Servicios Legales
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("toggle-servicios");
-  const container = document.getElementById("servicios-container");
-  let expanded = false;
+  const toggleBtnLegales = document.getElementById("toggle-servicios-legales");
+  const containerLegales = document.getElementById("servicios-legales-container");
+  let expandedLegales = false;
 
-  const serviciosExtra = `
-    <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-        <i class="fas fa-hammer fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Supervisión de Obra</h4>
-        <p>Control técnico y administrativo para asegurar calidad y cumplimiento de plazos en tu proyecto.</p>
-      </div>
-    </div>
-
-    <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-        <i class="fas fa-clipboard-check fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Peritaje Técnico</h4>
-        <p>Evaluaciones especializadas para resolver conflictos o validar estructuras y edificaciones.</p>
-      </div>
-    </div>
-
-    <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-        <i class="fas fa-landmark fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Regularización de Inmuebles</h4>
-        <p>Formaliza y sanea tu propiedad para garantizar su inscripción legal y valorización.</p>
-      </div>
-    </div>
-
+  const serviciosLegalesExtra = `
     <div class="col-md-4 servicio-extra">
       <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
         <i class="fas fa-briefcase fa-3x text-gold mb-3"></i>
@@ -105,12 +83,35 @@ document.addEventListener("DOMContentLoaded", () => {
         <p>Asesoramos tu empresa en temas legales, técnicos y de inversión inmobiliaria.</p>
       </div>
     </div>
+  `;
 
+  if (toggleBtnLegales) {
+    toggleBtnLegales.addEventListener("click", () => {
+      if (!expandedLegales) {
+        containerLegales.insertAdjacentHTML("beforeend", serviciosLegalesExtra);
+        toggleBtnLegales.textContent = "Mostrar menos servicios legales";
+        expandedLegales = true;
+      } else {
+        document.querySelectorAll("#servicios-legales-container .servicio-extra").forEach(el => el.remove());
+        toggleBtnLegales.textContent = "Mostrar más servicios legales";
+        expandedLegales = false;
+      }
+    });
+  }
+});
+
+// Toggle para Servicios Arquitectónicos
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtnArquitectonicos = document.getElementById("toggle-servicios-arquitectonicos");
+  const containerArquitectonicos = document.getElementById("servicios-arquitectonicos-container");
+  let expandedArquitectonicos = false;
+
+  const serviciosArquitectonicosExtra = `
     <div class="col-md-4 servicio-extra">
       <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-        <i class="fas fa-users fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Gestión de Proyectos</h4>
-        <p>Planificamos y dirigimos tu proyecto desde la idea inicial hasta su ejecución final.</p>
+        <i class="fas fa-clipboard-check fa-3x text-gold mb-3"></i>
+        <h4 class="fw-bold mb-2">Peritaje Técnico</h4>
+        <p>Evaluaciones especializadas para resolver conflictos o validar estructuras y edificaciones.</p>
       </div>
     </div>
 
@@ -123,15 +124,42 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  toggleBtn.addEventListener("click", () => {
-    if (!expanded) {
-      container.insertAdjacentHTML("beforeend", serviciosExtra);
-      toggleBtn.textContent = "Mostrar menos servicios";
-      expanded = true;
-    } else {
-      document.querySelectorAll(".servicio-extra").forEach(el => el.remove());
-      toggleBtn.textContent = "Mostrar más servicios";
-      expanded = false;
+  if (toggleBtnArquitectonicos) {
+    toggleBtnArquitectonicos.addEventListener("click", () => {
+      if (!expandedArquitectonicos) {
+        containerArquitectonicos.insertAdjacentHTML("beforeend", serviciosArquitectonicosExtra);
+        toggleBtnArquitectonicos.textContent = "Mostrar menos servicios arquitectónicos";
+        expandedArquitectonicos = true;
+      } else {
+        document.querySelectorAll("#servicios-arquitectonicos-container .servicio-extra").forEach(el => el.remove());
+        toggleBtnArquitectonicos.textContent = "Mostrar más servicios arquitectónicos";
+        expandedArquitectonicos = false;
+      }
+    });
+  }
+});
+
+// Ajuste dinámico para la frase en Hero (móvil vs desktop)
+document.addEventListener("DOMContentLoaded", function() {
+  const frase = document.querySelector('.frase-hero');
+  const right = document.querySelector('.right');
+  
+  function ajustarFrase() {
+    if (window.innerWidth >= 992) { // Desktop (lg+)
+      // Clona la frase y la mueve a la derecha
+      const clonedFrase = frase.cloneNode(true);
+      right.appendChild(clonedFrase);
+      frase.style.display = 'none'; // Oculta la original en la izquierda
+    } else { // Móvil
+      // Asegura que la frase esté visible en la izquierda y limpia la derecha
+      frase.style.display = 'block';
+      right.innerHTML = ''; // Limpia cualquier clon anterior
     }
-  });
+  }
+  
+  // Ejecuta al cargar
+  ajustarFrase();
+  
+  // Re-ejecuta al redimensionar la ventana (opcional, por si cambian de móvil a desktop)
+  window.addEventListener('resize', ajustarFrase);
 });
