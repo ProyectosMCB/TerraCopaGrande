@@ -1,0 +1,673 @@
+:root {
+  --oro-primario: #dcd89e;
+  --oro-oscuro: #8c8424;
+  --fondo-oscuro: #252525;
+  --fondo-claro: #f7f7f7;
+  --texto-gris: #c0c0c0;
+  --blanco: #ffffff;
+  --negro: #000000;
+
+}
+
+/* ------------------------------
+  General
+--------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--fondo-claro);
+  color: var(--negro);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-gold {
+  background-color: var(--oro-oscuro);
+  color: var(--blanco);
+}
+
+.btn-gold:hover {
+  background-color: var(--oro-primario);
+  color: var(--fondo-oscuro);
+}
+
+/* ------------------------------
+  Top Bar
+--------------------------------*/
+.top-bar {
+  background-color: var(--fondo-oscuro);
+  color: var(--oro-primario);
+  font-size: 0.9rem;
+  padding: 8px 0;
+}
+
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar a {
+  color: var(--oro-primario);
+  margin-left: 5px;
+}
+
+.social-icons a {
+  margin-left: 10px;
+  color: var(--oro-primario);
+}
+
+/* ------------------------------
+  Navegación
+--------------------------------*/
+header {
+  background-color: var(--blanco);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo h1 {
+  color: var(--oro-oscuro);
+  font-size: 1.6rem;
+}
+
+.logo p {
+  font-size: 0.9rem;
+  color: var(--fondo-oscuro);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: var(--fondo-oscuro);
+  font-weight: 500;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--oro-oscuro);
+}
+
+/* ------------------------------
+  Hero
+--------------------------------*/
+.hero {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  color: var(--blanco);
+  text-align: center;
+  padding: 150px 20px;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: auto;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--oro-primario);
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+/* ------------------------------
+  Nosotros
+--------------------------------*/
+#nosotros {
+  background-color: var(--fondo-oscuro);
+  color: var(--blanco);
+  padding: 80px 0;
+}
+
+#nosotros h2 {
+  font-size: 2rem;
+  border-left: 5px solid var(--oro-primario);
+  padding-left: 10px;
+}
+
+#nosotros p {
+  line-height: 1.7;
+  color: var(--texto-gris);
+}
+
+#nosotros ul li {
+  margin-bottom: 8px;
+}
+
+/* ------------------------------
+  CTA
+--------------------------------*/
+.cta {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  overflow: hidden;
+}
+
+.cta .overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cta .container {
+  position: relative;
+  z-index: 2;
+}
+
+.cta h2 {
+  color: var(--oro-primario);
+  font-size: 2.2rem;
+}
+
+.cta p {
+  color: var(--texto-gris);
+}
+
+.cta .btn-gold {
+  font-size: 1.1rem;
+  padding: 12px 25px;
+}
+
+
+
+/* ------------------------------
+   Servicios
+--------------------------------*/
+#servicios {
+  background-color: var(--fondo-claro);
+}
+
+#servicios h2 {
+  font-size: 2.2rem;
+  color: var(--oro-oscuro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#servicios p {
+  color: var(--fondo-oscuro);
+  font-size: 1rem;
+}
+
+.service-card {
+  background-color: var(--fondo-oscuro);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  color: var(--blanco);
+}
+
+.service-card i {
+  color: var(--oro-primario);
+  transition: color 0.3s ease;
+}
+
+.service-card h4 {
+  color: var(--oro-primario);
+  transition: color 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  background-color: var(--fondo-oscuro);
+  border-color: var(--oro-primario);
+  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+}
+
+.service-card:hover i,
+.service-card:hover h4 {
+  color: var(--oro-primario); /* se mantienen dorados */
+}
+
+.service-card p {
+  color: var(--texto-gris);
+}
+
+/* ------------------------------
+   Beneficios
+--------------------------------*/
+#beneficios {
+  background-color: var(--fondo-oscuro);
+}
+
+#beneficios h2 {
+  font-size: 2.2rem;
+  color: var(--oro-primario);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.benefit-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px);
+  border: 1px solid var(--oro-primario);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.border-gold {
+  border: 1px solid var(--oro-oscuro) !important;
+}
+
+#beneficios h5 {
+  color: var(--oro-primario);
+  margin-bottom: 10px;
+}
+
+#beneficios p {
+  color: var(--texto-gris);
+  font-size: 0.95rem;
+}
+
+/* ------------------------------
+   Contacto
+--------------------------------*/
+.contacto-section {
+  background-color: var(--fondo-oscuro);
+  color: var(--texto-gris);
+}
+
+.contacto-section h2 {
+  color: var(--oro-primario);
+  font-size: 2.2rem;
+}
+
+.contacto-section p {
+  font-size: 1rem;
+}
+
+.contact-form {
+  background-color: #111;
+  border: 1px solid var(--oro-oscuro);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: var(--blanco);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--texto-gris);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--oro-primario);
+  box-shadow: 0 0 5px var(--oro-oscuro);
+}
+
+/* ------------------------------
+  Footer final
+--------------------------------*/
+.footer {
+  background-color: #151515;
+  border-top: 1px solid var(--oro-oscuro);
+  color: var(--blanco);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  color: var(--texto-gris);
+}
+
+.footer .social-icons a {
+  color: var(--oro-primario);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+  color: var(--blanco);
+}
+
+
+/* ------------------------------
+  Videoblog
+--------------------------------*/
+.videoblog {
+  background-color: var(--fondo-claro);
+}
+
+.videoblog h2 {
+  font-size: 2.3rem;
+  color: var(--oro-oscuro);
+}
+
+.video-card iframe {
+  border: none;
+}
+
+.video-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+/* ------------------------------
+   Animaciones y efectos hover
+--------------------------------*/
+
+/* Tarjetas de servicios */
+.service-card {
+  background-color: var(--fondo-claro);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  background-color: #181818;
+  border-color: var(--oro-oscuro);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.service-card:hover h5 {
+  color: var(--oro-oscuro);
+}
+
+.service-card:hover i {
+  transform: rotateY(360deg);
+  transition: transform 0.7s ease;
+}
+
+/* Tarjetas de beneficios */
+.benefit-card {
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--oro-primario);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Hover suave en menú */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: var(--oro-oscuro);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--oro-oscuro);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ------------------------------
+   Loader animado y transición inicial
+--------------------------------*/
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#loader .loader-content {
+  text-align: center;
+  animation: fadeUp 2s infinite alternate;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0.4; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(-10px); }
+}
+
+/* Cuando el loader termina */
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Efecto de aparición del cuerpo */
+body.loaded main,
+body.loaded section,
+body.loaded nav,
+body.loaded footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Estado inicial invisible */
+main, section, nav, footer {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* ------------------------------
+   Menú hamburguesa moderno lateral
+--------------------------------*/
+.menu-btn {
+  width: 35px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 10001;
+}
+
+.menu-btn span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--oro-oscuro);
+  border-radius: 3px;
+  transition: all 0.4s ease;
+}
+
+/* Animación de cruz cuando se abre */
+.menu-btn.active span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+/* Panel lateral */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -35%; /* ahora inicia más afuera */
+  width: 35%; /* ocupa 35% de la pantalla */
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* más transparente */
+  backdrop-filter: blur(10px);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.7);
+  transition: right 0.5s ease;
+  z-index: 10000;
+  padding-top: 120px;
+  text-align: center;
+}
+
+/* cuando se abre */
+.side-menu.active {
+  right: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  margin: 25px 0;
+}
+
+.side-menu ul li a {
+  position: relative;
+  text-decoration: none;
+  color: var(--oro-primario);
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Efecto de subrayado dorado */
+.side-menu ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: var(--oro-oscuro);
+  transition: width 0.3s ease;
+}
+
+.side-menu ul li a:hover {
+  color: #fff;
+}
+
+.side-menu ul li a:hover::after {
+  width: 100%;
+}
+
+/* En escritorio más angosto */
+@media (min-width: 992px) {
+  .side-menu {
+    width: 30%;
+  }
+}
+/*  Botón Mostrar Más Servicios */
+.btn-mas-servicios {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--oro-oscuro);
+  background-color: transparent;
+  border: 2px solid var(--oro-oscuro);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.btn-mas-servicios:hover {
+  background-color: var(--oro-oscuro);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-mas-servicios {
+  color: #8c8424; /* dorado */
+  border: 2px solid #8c8424;
+  background: transparent;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-mas-servicios:hover {
+  background: #8c8424;
+  color: #ffffff;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Animación de aparición suave */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.servicio-extra {
+  animation: fadeUp 0.6s ease forwards;
+}
