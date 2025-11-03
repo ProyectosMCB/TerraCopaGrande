@@ -56,10 +56,10 @@
     <!-- Nueva barra de navegación horizontal -->
     <ul class="nav-links d-flex list-unstyled mb-0">
       <li class="nav-item">
-        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#inicio" class="nav-link active">Inicio</a> <!-- Agregué active de vuelta -->
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Servicios Legales
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -69,11 +69,12 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="#servicios-arquitectonicos" class="nav-link">Servicios Arquitectónicos</a>
+        <a href="#servicios-arquitectonicos" class="nav-link active">Servicios Arquitectónicos</a>
       </li>
     </ul>
   </div>
 </nav>
+
 
 <!-- Hero principal -->
 <section id="inicio" class="hero d-flex align-items-center">
@@ -97,25 +98,27 @@
 
 
 <!-- Sección Acerca de Nosotros -->
-<section id="nosotros" class="py-5 bg-dark text-light">
+<section id="nosotros" class="py-5">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1000&q=80" 
-            alt="Equipo Terra Copa Grande" 
+      <!-- Ventana 1: Oscura, imagen de personas dándose la mano -->
+      <div class="col-lg-6 mb-4 mb-lg-0 bg-dark text-light p-4 rounded-4">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1000&q=80" 
+            alt="Personas dándose la mano" 
             class="img-fluid rounded-4 shadow-lg">
       </div>
-      <div class="col-lg-6">
-        <p class="text-justify fw-bold">
-          "Protegemos tu inversión con respaldo legal y visión técnica" con cita
+      <!-- Ventana 2: Clara (blanca), solo texto con cita en comillas, fuente diferente -->
+      <div class="col-lg-6 bg-white text-dark p-4 rounded-4"> <!-- Agregué text-dark aquí para asegurar -->
+        <p class="text-justify fw-bold text-dark" style="font-style: italic;"> <!-- Y aquí también -->
+          "Protegemos tu inversión con respaldo legal y visión técnica"
         </p>
-        <p class="text-justify">
+        <p class="text-justify text-dark" style="font-style: italic;"> <!-- Y aquí -->
           Somos un estudio jurídico y de arquitectura con más de 13 años de experiencia en el sector inmobiliario. Nuestro equipo multidisciplinario combina el conocimiento jurídico con la práctica técnica para brindar asesorías sólidas, integrales y seguras.
         </p>
-        <p class="text-justify">
+        <p class="text-justify text-dark" style="font-style: italic;"> <!-- Y aquí -->
           Acompañamos a nuestros clientes en cada etapa del desarrollo inmobiliario, desde la planificación legal hasta la ejecución del proyecto, garantizando certeza cumplimiento normativo y seguridad patrimonial.
         </p>
-        <p class="text-justify">
+        <p class="text-justify text-dark" style="font-style: italic;"> <!-- Y aquí -->
           "En Terra Copa Grande, hacemos que la seguridad jurídica y la gestión inmobiliaria sean accesibles desde cualquier lugar. Te brindamos asesoría especializada y confianza con un clic."
         </p>
       </div>
@@ -123,53 +126,61 @@
   </div>
 </section>
 
+
 <!-- SECCIÓN SERVICIOS LEGALES -->
 <section id="servicios-legales" class="py-5 bg-light">
   <div class="container text-center">
-    <h2 class="text-gold fw-bold mb-4">Nuestros Servicios Legales</h2>
-    <p class="mb-5 text-muted">
-      Brindamos soluciones legales especializadas para garantizar la seguridad jurídica en tus proyectos inmobiliarios.
-    </p>
+    <div class="row justify-content-center">
+      <div class="col-lg-8"> <!-- No ocupa toda la ventana, centrado -->
+        <h2 class="text-gold fw-bold mb-4">Nuestros Servicios Legales</h2>
+        <p class="mb-5 text-muted">
+          "Brindamos soluciones legales especializadas para garantizar la seguridad jurídica<br>en tus proyectos inmobiliarios."
+        </p>
+        
 
-    <!-- Servicios legales principales (3 visibles) -->
-    <div class="row g-4" id="servicios-legales-container">
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-          <i class="fas fa-scale-balanced fa-3x text-gold mb-3"></i>
-          <h4 class="fw-bold mb-2">Asesoría Legal</h4>
-          <p class="text-justify">
-            Especialistas en derecho inmobiliario y civil para garantizar la seguridad jurídica en cada transacción o proyecto.
-          </p>
+
+        <!-- Servicios legales principales (3 visibles) -->
+        <div class="row g-4" id="servicios-legales-container">
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
+              <i class="fas fa-scale-balanced fa-3x text-gold mb-3"></i>
+              <h4 class="fw-bold mb-2">Asesoría Legal</h4>
+              <p class="text-justify">
+                Especialistas en derecho inmobiliario y civil para garantizar la seguridad jurídica en cada transacción o proyecto.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+            <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
+              <i class="fas fa-city fa-3x text-gold mb-3"></i>
+              <h4 class="fw-bold mb-2">Gestión Inmobiliaria</h4>
+              <p class="text-justify">
+                Te acompañamos en la compra, venta y regularización de inmuebles con respaldo técnico y legal.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
+              <i class="fas fa-landmark fa-3x text-gold mb-3"></i>
+              <h4 class="fw-bold mb-2">Regularización de Inmuebles</h4>
+              <p class="text-justify">
+                Formaliza y sanea tu propiedad para garantizar su inscripción legal y valorización.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón Mostrar Más Legales -->
+        <div class="text-center mt-5">
+          <button id="toggle-servicios-legales" class="btn-mas-servicios">Mostrar más servicios legales</button>
         </div>
       </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
-        <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-          <i class="fas fa-city fa-3x text-gold mb-3"></i>
-          <h4 class="fw-bold mb-2">Gestión Inmobiliaria</h4>
-          <p class="text-justify">
-            Te acompañamos en la compra, venta y regularización de inmuebles con respaldo técnico y legal.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
-          <i class="fas fa-landmark fa-3x text-gold mb-3"></i>
-          <h4 class="fw-bold mb-2">Regularización de Inmuebles</h4>
-          <p class="text-justify">
-            Formaliza y sanea tu propiedad para garantizar su inscripción legal y valorización.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botón Mostrar Más Legales -->
-    <div class="text-center mt-5">
-      <button id="toggle-servicios-legales" class="btn-mas-servicios">Mostrar más servicios legales</button>
     </div>
   </div>
 </section>
+
 
 <!-- CTA (Llamada a la acción) -->
 <section class="cta text-center text-light py-5">
@@ -190,7 +201,7 @@
   <div class="container text-center">
     <h2 class="text-gold fw-bold mb-4">Nuestros Servicios Arquitectónicos</h2>
     <p class="mb-5 text-muted">
-      Ofrecemos soluciones técnicas y de diseño para transformar tus ideas en espacios funcionales y estéticos.
+      "Ofrecemos soluciones técnicas y de diseño para transformar tus ideas en espacios funcionales y estéticos."
     </p>
 
     <!-- Servicios arquitectónicos principales (3 visibles) -->
@@ -234,7 +245,7 @@
 </section>
 
 <!-- Nueva sección: Asistencia Legal Integral -->
-<section class="asistencia-legal text-center text-light py-5" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
+<section class="asistencia-legal text-center text-light py-5" style="background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
   <div class="overlay"></div>
   <div class="container position-relative">
     <h2 class="fw-bold mb-3">Asistencia Legal Integral</h2>
