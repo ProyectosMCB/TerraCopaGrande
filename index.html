@@ -18,11 +18,15 @@
 </head>
 
 <body>
-<!--  Pantalla de carga -->
+<!-- Pantalla de carga -->
 <div id="loader">
   <div class="loader-content">
     <i class="fas fa-landmark fa-3x text-gold mb-3"></i>
     <h2 class="text-gold fw-bold">Terra Copa Grande</h2>
+    <!-- Barra de carga épica -->
+    <div class="progress-bar-container mt-4">
+      <div class="progress-bar-fill"></div>
+    </div>
   </div>
 </div>
 
@@ -52,7 +56,7 @@
     <!-- Nueva barra de navegación horizontal -->
     <ul class="nav-links d-flex list-unstyled mb-0">
       <li class="nav-item">
-        <a href="#inicio" class="nav-link active">Inicio</a> <!-- Línea debajo por .active -->
+        <a href="#inicio" class="nav-link active">Inicio</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,15 +64,16 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="#servicios-legales">Servicios Legales</a></li>
-          <li><a class="dropdown-item" href="#servicios-arquitectonicos">Servicios Arquitectónicos</a></li>
           <li><a class="dropdown-item" href="#beneficios">Beneficios</a></li>
           <li><a class="dropdown-item" href="#contacto">Contactos</a></li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a href="#servicios-arquitectonicos" class="nav-link">Servicios Arquitectónicos</a>
+      </li>
     </ul>
   </div>
 </nav>
-
 
 <!-- Hero principal -->
 <section id="inicio" class="hero d-flex align-items-center">
@@ -91,7 +96,7 @@
 
 
 
-  <!--  Sección Acerca de Nosotros -->
+<!-- Sección Acerca de Nosotros -->
 <section id="nosotros" class="py-5 bg-dark text-light">
   <div class="container">
     <div class="row align-items-center">
@@ -101,18 +106,18 @@
             class="img-fluid rounded-4 shadow-lg">
       </div>
       <div class="col-lg-6">
-        <!--<h2 class="text-gold fw-bold mb-3">¿Quiénes Somos?</h2>-->
-        <p class="text-justify">
+        <p class="text-justify fw-bold">
           "Protegemos tu inversión con respaldo legal y visión técnica" con cita
         </p>
         <p class="text-justify">
-          Con más de 13 años de experiencia en el sector inmobiliario. Nuestro equipo multidisciplinario combina el conocimiento jurídico con la práctica técnica para brindar asesorías sólidas, integrales y seguras.
+          Somos un estudio jurídico y de arquitectura con más de 13 años de experiencia en el sector inmobiliario. Nuestro equipo multidisciplinario combina el conocimiento jurídico con la práctica técnica para brindar asesorías sólidas, integrales y seguras.
         </p>
-        <!--<ul class="list-unstyled mt-3">
-          <li><i class="fas fa-check text-gold me-2"></i>Asesoría legal y técnica completa</li>
-          <li><i class="fas fa-check text-gold me-2"></i>Proyectos gestionados con respaldo profesional</li>
-          <li><i class="fas fa-check text-gold me-2"></i>Atención personalizada y confidencial</li>
-        </ul>-->
+        <p class="text-justify">
+          Acompañamos a nuestros clientes en cada etapa del desarrollo inmobiliario, desde la planificación legal hasta la ejecución del proyecto, garantizando certeza cumplimiento normativo y seguridad patrimonial.
+        </p>
+        <p class="text-justify">
+          "En Terra Copa Grande, hacemos que la seguridad jurídica y la gestión inmobiliaria sean accesibles desde cualquier lugar. Te brindamos asesoría especializada y confianza con un clic."
+        </p>
       </div>
     </div>
   </div>
@@ -166,6 +171,20 @@
   </div>
 </section>
 
+<!-- CTA (Llamada a la acción) -->
+<section class="cta text-center text-light py-5">
+  <div class="overlay"></div>
+  <div class="container position-relative">
+    <h2 class="fw-bold mb-3">¿Requieres asesoría legal en línea?</h2>
+    <p class="lead mb-4">Estamos contigo donde estés, ofreciendo soluciones jurídicas respaldadas por experiencia, confianza y excelencia.<br>Contáctanos hoy y accede a una atención personalizada.</p>
+    <a href="https://wa.me/51950372630" target="_blank" class="btn btn-gold btn-lg">
+      <i class="fab fa-whatsapp"></i> Agenda tu consulta
+    </a>
+  </div>
+</section>
+
+
+
 <!-- SECCIÓN SERVICIOS ARQUITECTÓNICOS -->
 <section id="servicios-arquitectonicos" class="py-5 bg-light">
   <div class="container text-center">
@@ -214,6 +233,17 @@
   </div>
 </section>
 
+<!-- Nueva sección: Asistencia Legal Integral -->
+<section class="asistencia-legal text-center text-light py-5" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;">
+  <div class="overlay"></div>
+  <div class="container position-relative">
+    <h2 class="fw-bold mb-3">Asistencia Legal Integral</h2>
+    <p class="lead mb-4">Ofrecemos soluciones legales estratégicas en derecho inmobiliario y urbanístico, respaldando cada inversión con seguridad jurídica y experiencia profesional.</p>
+    <a href="https://wa.me/51950372630" target="_blank" class="btn btn-gold btn-lg">
+      <i class="fab fa-whatsapp"></i> Contáctanos
+    </a>
+  </div>
+</section>
 
 
 <!--  Sección Beneficios -->
@@ -259,17 +289,7 @@
 </section>
 
 
-<!--  CTA (Llamada a la acción) -->
-<section class="cta text-center text-light py-5">
-  <div class="overlay"></div>
-  <div class="container position-relative">
-    <h2 class="fw-bold mb-3">¿Listo para comenzar tu proyecto?</h2>
-    <p class="lead mb-4">Recibe una asesoría inicial sin compromiso con nuestro equipo de expertos.</p>
-    <a href="https://wa.me/51950372630" target="_blank" class="btn btn-gold btn-lg">
-      <i class="fab fa-whatsapp"></i> Solicita tu consulta
-    </a>
-  </div>
-</section>
+
 
 <!-- Sección de Videoblog -->
 <section id="videoblog" class="videoblog py-5 bg-light">
