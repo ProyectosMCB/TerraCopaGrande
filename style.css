@@ -682,3 +682,30 @@ html, body {
   visibility: hidden;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
+
+/* Línea fina divisoria en el navbar */
+.navbar {
+  border-bottom: 1px solid var(--oro-oscuro); /* Línea fina dorada */
+}
+
+/* Forzar color dorado oscuro en el párrafo específico */
+#nosotros .text-gold {
+  color: #8c8424 !important; /* --oro-oscuro */
+}
+
+#servicios-legales .text-gold{
+  color: #8c8424 !important; /* --oro-oscuro */
+
+}
+
+#servicios-arquitectonicos .text-gold{
+  color: #8c8424 !important; /* --oro-oscuro */
+
+}
+
+/* Alturas uniformes para todas las secciones principales (ventanas) */
+#inicio, #nosotros, #servicios-legales, #servicios-arquitectonicos, #beneficios, .cta, .asistencia-legal, #videoblog, #contacto {
+  min-height: 100vh; /* Altura mínima de toda la pantalla */
+  display: flex;
+  align-items: center; /* Centrar contenido verticalmente si es necesario */
+}
