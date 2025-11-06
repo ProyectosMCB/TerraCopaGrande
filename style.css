@@ -626,3 +626,51 @@ html, body {
 #nosotros .text-gold {
   color: #8c8424 !important;
 }
+
+/* === Ajuste específico para service-detail.html === */
+#service-detail .service-image-container img {
+  height: 50vh !important; /* antes era 25vh */
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ============================================
+   NAVBAR — COLOR BLANCO FIJO + DORADO EN HOVER
+   ============================================ */
+
+/* Color base de los enlaces */
+.nav-links .nav-link {
+  color: #ffffff !important; /* Siempre blanco */
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Efecto dorado al pasar el mouse */
+.nav-links .nav-link:hover {
+  color: #8c8424 !important; /* Dorado al hover */
+}
+
+/* Línea animada inferior */
+.nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: #8c8424;
+  transition: width 0.3s ease;
+}
+
+.nav-links .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Evita que el scroll o active modifiquen el color */
+.nav-links .nav-link.active {
+  color: #ffffff !important;
+}
+.navbar.scrolled .nav-link {
+  color: #ffffff !important;
+}
+
