@@ -1,11 +1,12 @@
 :root {
-  --oro-primario: #dcd89e;
-  --oro-oscuro: #8c8424;
-  --fondo-oscuro: #252525;
-  --fondo-claro: #f7f7f7;
-  --texto-gris: #c0c0c0;
-  --blanco: #ffffff;
-  --negro: #000000;
+  --gold-light: #dcd89e;
+  --gold-dark: #8c8424;
+  --bg-dark: #252525;
+  --bg-light: #f7f7f7;
+  --text-gray: #c0c0c0;
+  --white: #ffffff;
+  --black: #000000;
+  --border-radius: 5px;
 }
 
 /* ------------------------------
@@ -19,8 +20,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--fondo-claro);
-  color: var(--negro);
+  background-color: var(--bg-light);
+  color: var(--black);
 }
 
 .container {
@@ -37,27 +38,27 @@ a {
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   font-weight: 600;
   transition: 0.3s ease;
 }
 
 .btn-gold {
-  background-color: var(--oro-oscuro);
-  color: var(--blanco);
+  background-color: var(--gold-dark);
+  color: var(--white);
 }
 
 .btn-gold:hover {
-  background-color: var(--oro-primario);
-  color: var(--fondo-oscuro);
+  background-color: var(--gold-light);
+  color: var(--bg-dark);
 }
 
 /* ------------------------------
   Top Bar
 --------------------------------*/
 .top-bar {
-  background-color: var(--fondo-oscuro);
-  color: var(--oro-primario);
+  background-color: var(--bg-dark);
+  color: var(--gold-light);
   font-size: 0.9rem;
   padding: 8px 0;
 }
@@ -69,44 +70,40 @@ a {
 }
 
 .top-bar a {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   margin-left: 5px;
 }
 
 .social-icons a {
   margin-left: 10px;
-  color: var(--oro-primario);
+  color: var(--gold-light);
 }
 
 /* ------------------------------
-  Navegación (actualizada para barra horizontal con dropdown)
+  Navbar
 --------------------------------*/
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
+  border-bottom: 1px solid var(--gold-dark);
 }
 
-/* Ocultar el menú hamburguesa y panel lateral (ya no se usan) */
-.menu-btn {
-  display: none;
-}
-
+.menu-btn,
 .side-menu {
   display: none;
 }
 
-/* Estilos para la nueva barra horizontal */
 .nav-links {
   display: flex;
   gap: 25px;
   align-items: center;
-  list-style: none; /* Elimina bullets de la lista */
+  list-style: none;
 }
 
 .nav-links .nav-link {
-  color: var(--blanco); /* Blanco para contraste en navbar oscura */
+  color: var(--white);
   font-weight: 500;
   text-decoration: none;
   position: relative;
@@ -114,68 +111,80 @@ a {
 }
 
 .nav-links .nav-link.active {
-  color: var(--oro-oscuro);
+  color: var(--gold-dark);
   font-weight: 600;
 }
 
-.nav-links .nav-link.active::after {
+.nav-links .nav-link.active::after,
+.nav-links .nav-link:hover::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 2px;
   left: 0;
   bottom: 0;
-  background: var(--oro-oscuro);
-}
-
-.nav-links .nav-link:hover {
-  color: var(--oro-oscuro);
-}
-
-.nav-links .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-  background: var(--oro-oscuro);
+  background: var(--gold-dark);
   transition: width 0.3s ease;
 }
 
-.nav-links .nav-link:hover::after {
-  width: 100%;
+.nav-links .nav-link:hover {
+  color: var(--gold-dark);
 }
 
-/* Estilos para el dropdown (usando Bootstrap, pero personalizado) */
 .dropdown-menu {
-  background-color: var(--blanco);
-  border: 1px solid var(--oro-oscuro);
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-left: 10px;
 }
 
 .dropdown-menu .dropdown-item {
-  color: var(--fondo-oscuro);
-  transition: background-color 0.3s ease;
+  color: var(--white);
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 .dropdown-menu .dropdown-item:hover {
-  background-color: var(--oro-primario);
-  color: var(--fondo-oscuro);
+  color: var(--gold-light);
+  background-color: transparent;
 }
 
-/* Responsive: En móviles, oculta la barra y muestra hamburguesa si quieres (opcional) */
+.dropdown-menu .dropdown-item:active,
+.dropdown-menu .dropdown-item:focus {
+  color: var(--gold-dark);
+}
+
+.dropdown-menu .dropdown-item:active::after,
+.dropdown-menu .dropdown-item:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background: var(--gold-dark);
+}
+
 @media (max-width: 768px) {
   .nav-links {
-    display: none; /* Oculta la barra horizontal en móviles */
+    display: none;
   }
   .menu-btn {
-    display: block; /* Muestra el botón hamburguesa si lo reactivas */
+    display: block;
   }
   .side-menu {
-    display: block; /* Muestra el panel lateral si lo reactivas */
+    display: block;
   }
+}
+
+/* ------------------------------
+  Sections (Uniform Heights)
+--------------------------------*/
+#inicio, #nosotros, #servicios-legales, #servicios-arquitectonicos, #beneficios, .cta, .asistencia-legal, #videoblog, #contacto {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
 }
 
 /* ------------------------------
@@ -184,7 +193,7 @@ a {
 .hero {
   position: relative;
   background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-  color: var(--blanco);
+  color: var(--white);
   text-align: center;
   padding: 150px 20px;
 }
@@ -205,7 +214,7 @@ a {
 .hero-content h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: var(--oro-primario);
+  color: var(--gold-light);
 }
 
 .hero-content p {
@@ -214,27 +223,31 @@ a {
 }
 
 /* ------------------------------
-  Nosotros
+  About (Nosotros)
 --------------------------------*/
 #nosotros {
-  background-color: var(--fondo-oscuro);
-  color: var(--blanco);
+  background-color: var(--bg-dark);
+  color: var(--white);
   padding: 80px 0;
 }
 
 #nosotros h2 {
   font-size: 2rem;
-  border-left: 5px solid var(--oro-primario);
+  border-left: 5px solid var(--gold-light);
   padding-left: 10px;
 }
 
 #nosotros p {
   line-height: 1.7;
-  color: var(--texto-gris);
+  color: var(--text-gray);
 }
 
 #nosotros ul li {
   margin-bottom: 8px;
+}
+
+.gold-text {
+  color: var(--gold-dark);
 }
 
 /* ------------------------------
@@ -258,12 +271,12 @@ a {
 }
 
 .cta h2 {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   font-size: 2.2rem;
 }
 
 .cta p {
-  color: var(--texto-gris);
+  color: var(--text-gray);
 }
 
 .cta .btn-gold {
@@ -272,67 +285,88 @@ a {
 }
 
 /* ------------------------------
-   Servicios
+  Services
 --------------------------------*/
 #servicios {
-  background-color: var(--fondo-claro);
+  background-color: var(--bg-light);
 }
 
 #servicios h2 {
   font-size: 2.2rem;
-  color: var(--oro-oscuro);
+  color: var(--gold-dark);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 #servicios p {
-  color: var(--fondo-oscuro);
+  color: var(--bg-dark);
+  font-size: 1rem;
+}
+
+#servicios-legales, #servicios-arquitectonicos {
+  background-color: var(--bg-light);
+}
+
+#servicios-legales h2, #servicios-arquitectonicos h2 {
+  font-size: 2.2rem;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#servicios-legales p, #servicios-arquitectonicos p {
+  color: var(--bg-dark);
   font-size: 1rem;
 }
 
 .service-card {
-  background-color: var(--fondo-oscuro);
+  background-color: var(--bg-dark);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  color: var(--blanco);
+  color: var(--white);
+  will-change: transform;
 }
 
 .service-card i {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   transition: color 0.3s ease;
 }
 
 .service-card h4 {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   transition: color 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  background-color: var(--fondo-oscuro);
-  border-color: var(--oro-primario);
-  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+  transform: translateY(-12px) scale(1.03);
+  background-color: #181818;
+  border-color: var(--gold-dark);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-.service-card:hover i,
-.service-card:hover h4 {
-  color: var(--oro-primario);
+.service-card:hover h5 {
+  color: var(--gold-dark);
+}
+
+.service-card:hover i {
+  transform: rotateY(360deg);
+  transition: transform 0.7s ease;
 }
 
 .service-card p {
-  color: var(--texto-gris);
+  color: var(--text-gray);
 }
 
 /* ------------------------------
-   Beneficios
+  Benefits
 --------------------------------*/
 #beneficios {
-  background-color: var(--fondo-oscuro);
+  background-color: var(--bg-dark);
 }
 
 #beneficios h2 {
   font-size: 2.2rem;
-  color: var(--oro-primario);
+  color: var(--gold-light);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -341,38 +375,39 @@ a {
   background-color: rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   border: 1px solid transparent;
+  will-change: transform;
 }
 
 .benefit-card:hover {
-  transform: translateY(-8px);
-  border: 1px solid var(--oro-primario);
-  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .border-gold {
-  border: 1px solid var(--oro-oscuro) !important;
+  border: 1px solid var(--gold-dark) !important;
 }
 
 #beneficios h5 {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   margin-bottom: 10px;
 }
 
 #beneficios p {
-  color: var(--texto-gris);
+  color: var(--text-gray);
   font-size: 0.95rem;
 }
 
 /* ------------------------------
-   Contacto
+  Contact
 --------------------------------*/
 .contacto-section {
-  background-color: var(--fondo-oscuro);
-  color: var(--texto-gris);
+  background-color: var(--bg-dark);
+  color: var(--text-gray);
 }
 
 .contacto-section h2 {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   font-size: 2.2rem;
 }
 
@@ -382,63 +417,63 @@ a {
 
 .contact-form {
   background-color: #111;
-  border: 1px solid var(--oro-oscuro);
+  border: 1px solid var(--gold-dark);
 }
 
 .contact-form input,
 .contact-form textarea {
   background-color: #1a1a1a;
   border: 1px solid #333;
-  color: var(--blanco);
+  color: var(--white);
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: var(--texto-gris);
+  color: var(--text-gray);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: var(--oro-primario);
-  box-shadow: 0 0 5px var(--oro-oscuro);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 5px var(--gold-dark);
 }
 
 /* ------------------------------
-  Footer final
+  Footer
 --------------------------------*/
 .footer {
   background-color: #151515;
-  border-top: 1px solid var(--oro-oscuro);
-  color: var(--blanco);
+  border-top: 1px solid var(--gold-dark);
+  color: var(--white);
   text-align: center;
   padding: 20px 0;
   font-size: 0.9rem;
 }
 
 .footer p {
-  color: var(--texto-gris);
+  color: var(--text-gray);
 }
 
 .footer .social-icons a {
-  color: var(--oro-primario);
+  color: var(--gold-light);
   font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 
 .footer .social-icons a:hover {
-  color: var(--blanco);
+  color: var(--white);
 }
 
 /* ------------------------------
   Videoblog
 --------------------------------*/
 .videoblog {
-  background-color: var(--fondo-claro);
+  background-color: var(--bg-light);
 }
 
 .videoblog h2 {
   font-size: 2.3rem;
-  color: var(--oro-oscuro);
+  color: var(--gold-dark);
 }
 
 .video-card iframe {
@@ -447,6 +482,7 @@ a {
 
 .video-card {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
 .video-card:hover {
@@ -455,46 +491,7 @@ a {
 }
 
 /* ------------------------------
-   Animaciones y efectos hover
---------------------------------*/
-
-/* Tarjetas de servicios */
-.service-card {
-  background-color: var(--fondo-claro);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-
-.service-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  background-color: #181818;
-  border-color: var(--oro-oscuro);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-.service-card:hover h5 {
-  color: var(--oro-oscuro);
-}
-
-.service-card:hover i {
-  transform: rotateY(360deg);
-  transition: transform 0.7s ease;
-}
-
-/* Tarjetas de beneficios */
-.benefit-card {
-  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--oro-primario);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-}
-
-/* ------------------------------
-   Loader animado y transición inicial
+  Loader
 --------------------------------*/
 #loader {
   position: fixed;
@@ -502,7 +499,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -516,18 +513,43 @@ a {
   animation: fadeUp 2s infinite alternate;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0.4; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(-10px); }
+#loader .loader-content i,
+#loader .loader-content h2 {
+  color: var(--gold-dark);
 }
 
-/* Cuando el loader termina */
+.progress-bar-container {
+  width: 300px;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+  border-radius: var(--border-radius);
+  width: 0%;
+  animation: loadBar 3s ease-in-out forwards;
+}
+
+@keyframes loadBar {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
 #loader.fade-out {
   opacity: 0;
   visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-/* Efecto de aparición del cuerpo */
+/* ------------------------------
+  Body Load Effects
+--------------------------------*/
 body.loaded main,
 body.loaded section,
 body.loaded nav,
@@ -537,36 +559,35 @@ body.loaded footer {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Estado inicial invisible */
 main, section, nav, footer {
   opacity: 0;
   transform: translateY(30px);
 }
 
 /* ------------------------------
-   Botón Mostrar Más Servicios
+  Button More Services
 --------------------------------*/
 .btn-mas-servicios {
   display: inline-block;
   padding: 12px 30px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--oro-oscuro);
+  color: var(--gold-dark);
   background-color: transparent;
-  border: 2px solid var(--oro-oscuro);
+  border: 2px solid var(--gold-dark);
   border-radius: 30px;
   text-decoration: none;
   transition: all 0.4s ease;
 }
 
 .btn-mas-servicios:hover {
-  background-color: var(--oro-oscuro);
-  color: var(--blanco);
+  background-color: var(--gold-dark);
+  color: var(--white);
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 /* ------------------------------
-   Animación de aparición suave
+  Extra Animations
 --------------------------------*/
 @keyframes fadeUp {
   from {
@@ -584,128 +605,24 @@ main, section, nav, footer {
 }
 
 /* ------------------------------
-   Prevención de scroll horizontal
+  Prevent Horizontal Scroll
 --------------------------------*/
 html, body {
   overflow-x: hidden;
 }
-/* Estilos actualizados para el dropdown */
-.dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.8); /* Negro semi-transparente */
-  border: none; /* Sin borde */
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  margin-left: 10px; /* Separación del borde lateral para que no se pegue */
+
+/* ------------------------------
+  Accessibility
+--------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.dropdown-menu .dropdown-item {
-  color: var(--blanco); /* Texto blanco por defecto en fondo negro */
-  position: relative; /* Necesario para la línea debajo */
-  transition: color 0.3s ease;
-}
-
-.dropdown-menu .dropdown-item:hover {
-  color: var(--oro-primario); /* Letras doradas en hover */
-  background-color: transparent; /* Sin fondo en hover para mantener transparencia */
-}
-
-.dropdown-menu .dropdown-item:active,
-.dropdown-menu .dropdown-item:focus {
-  color: var(--oro-oscuro); /* Letras doradas más oscuras al hacer click/focus */
-}
-
-.dropdown-menu .dropdown-item:active::after,
-.dropdown-menu .dropdown-item:focus::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-  background: var(--oro-oscuro); /* Línea dorada elegante al hacer click */
-}
-
-/* Loader blanco con barra de carga épica */
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--blanco); /* Blanco en lugar de negro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 9999;
-  transition: opacity 1s ease, visibility 1s ease;
-}
-
-#loader .loader-content {
-  text-align: center;
-  animation: fadeUp 2s infinite alternate; /* Mantiene la animación del logo y texto */
-}
-
-#loader .loader-content i,
-#loader .loader-content h2 {
-  color: var(--oro-oscuro); /* Logo y texto dorados para contraste en fondo blanco */
-}
-
-/* Barra de carga épica */
-.progress-bar-container {
-  width: 300px; /* Ancho de la barra */
-  height: 8px; /* Altura */
-  background-color: rgba(0, 0, 0, 0.1); /* Fondo sutil de la barra */
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--oro-primario), var(--oro-oscuro)); /* Gradiente dorado épico */
-  border-radius: 4px;
-  width: 0%; /* Inicia vacía */
-  animation: loadBar 3s ease-in-out forwards; /* Animación de carga */
-}
-
-/* Animación de la barra de carga */
-@keyframes loadBar {
-  0% { width: 0%; }
-  50% { width: 70%; } /* Llega al 70% rápido */
-  100% { width: 100%; } /* Completa al 100% */
-}
-
-/* Cuando el loader termina */
-#loader.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-/* Línea fina divisoria en el navbar */
-.navbar {
-  border-bottom: 1px solid var(--oro-oscuro); /* Línea fina dorada */
-}
-
-/* Forzar color dorado oscuro en el párrafo específico */
+/* Color específico para el párrafo en About */
 #nosotros .text-gold {
-  color: #8c8424 !important; /* --oro-oscuro */
-}
-
-#servicios-legales .text-gold{
-  color: #8c8424 !important; /* --oro-oscuro */
-
-}
-
-#servicios-arquitectonicos .text-gold{
-  color: #8c8424 !important; /* --oro-oscuro */
-
-}
-
-/* Alturas uniformes para todas las secciones principales (ventanas) */
-#inicio, #nosotros, #servicios-legales, #servicios-arquitectonicos, #beneficios, .cta, .asistencia-legal, #videoblog, #contacto {
-  min-height: 100vh; /* Altura mínima de toda la pantalla */
-  display: flex;
-  align-items: center; /* Centrar contenido verticalmente si es necesario */
+  color: #8c8424 !important;
 }
