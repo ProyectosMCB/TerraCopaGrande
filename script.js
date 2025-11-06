@@ -77,10 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const serviciosLegalesExtra = `
     <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="consultoria-empresarial">
         <i class="fas fa-briefcase fa-3x text-gold mb-3"></i>
         <h4 class="fw-bold mb-2">Consultoría Empresarial</h4>
-        <p>Asesoramos tu empresa en temas legales, técnicos y de inversión inmobiliaria.</p>
       </div>
     </div>
   `;
@@ -100,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 // Toggle para Servicios Arquitectónicos
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtnArquitectonicos = document.getElementById("toggle-servicios-arquitectonicos");
@@ -108,18 +108,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const serviciosArquitectonicosExtra = `
     <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="peritaje-tecnico">
         <i class="fas fa-clipboard-check fa-3x text-gold mb-3"></i>
         <h4 class="fw-bold mb-2">Peritaje Técnico</h4>
-        <p>Evaluaciones especializadas para resolver conflictos o validar estructuras y edificaciones.</p>
       </div>
     </div>
 
     <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="diseno-interior">
         <i class="fas fa-pencil-ruler fa-3x text-gold mb-3"></i>
         <h4 class="fw-bold mb-2">Diseño Interior</h4>
-        <p>Espacios armónicos y funcionales con identidad estética y confort moderno.</p>
       </div>
     </div>
   `;
@@ -163,3 +161,21 @@ document.addEventListener("DOMContentLoaded", function() {
   // Re-ejecuta al redimensionar la ventana (opcional, por si cambian de móvil a desktop)
   window.addEventListener('resize', ajustarFrase);
 });
+
+// Redirigir a página de detalle al click en tarjeta (con event delegation para tarjetas dinámicas)
+document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.service-card')) {
+      const card = e.target.closest('.service-card');
+      const serviceId = card.getAttribute('data-service');
+      if (serviceId) {
+        window.location.href = `service-detail.html?service=${serviceId}`;
+      }
+    }
+  });
+});
+
+
+
+
+
