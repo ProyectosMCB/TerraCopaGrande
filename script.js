@@ -155,7 +155,66 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+// ======================================================
+// FORMULARIO DE CONTACTO - POPUP DE CONFIRMACIÓN
+// ======================================================
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector(".contact-form");
+  const popup = document.getElementById("popup-confirmacion");
 
+  if (form && popup) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
+      // Validaciones
+      const nombre = form.querySelector('input[name="nombre"]').value.trim();
+      const correo = form.querySelector('input[name="email"]').value.trim();
+      const mensaje = form.querySelector('textarea[name="mensaje"]').value.trim();
 
+      if (nombre.length === 0 || nombre.length > 50) {
+        alert("⚠️ El nombre debe tener entre 1 y 50 caracteres.");
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(correo)) {
+        alert("⚠️ Ingresa un correo electrónico válido.");
+        return;
+      }
+
+      if (mensaje.length === 0 || mensaje.length > 500) {
+        alert("⚠️ El mensaje debe tener entre 1 y 500 caracteres.");
+        return;
+      }
+
+      // Envío con Formspree
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          mostrarPopup(); // Mostrar el popup
+          form.reset();
+        } else {
+          alert("❌ Ocurrió un error al enviar el mensaje. Intenta nuevamente.");
+        }
+      } catch (error) {
+        alert("⚠️ Error de conexión. Verifica tu internet e intenta otra vez.");
+      }
+    });
+  }
+
+  // -------- POPUP DE CONFIRMACIÓN --------
+  function mostrarPopup() {
+    popup.classList.add("activo");
+
+    // Oculta el popup después de 5 segundos
+    setTimeout(() => {
+      popup.classList.remove("activo");
+    }, 5000);
+  }
+});
 
