@@ -351,26 +351,57 @@
         </div>
       </div>
 
-      <!-- Formulario -->
+      <!-- Formulario funcional con Formspree -->
       <div class="col-lg-6">
-        <form class="contact-form p-4 rounded-4 shadow-lg bg-black">
+        <form 
+          action="https://formspree.io/f/mzzknwgr" 
+          method="POST" 
+          class="contact-form p-4 rounded-4 shadow-lg bg-black"
+          novalidate
+        >
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Nombre completo" required>
+            <input 
+              type="text" 
+              class="form-control" 
+              name="nombre" 
+              placeholder="Nombre completo" 
+              minlength="2" 
+              maxlength="50" 
+              required
+            >
           </div>
+
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Correo electrónico" required>
+            <input 
+              type="email" 
+              class="form-control" 
+              name="email" 
+              placeholder="Correo electrónico" 
+              required
+            >
           </div>
+
           <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+            <textarea 
+              class="form-control" 
+              name="mensaje" 
+              rows="4" 
+              placeholder="Escribe tu mensaje..." 
+              maxlength="500" 
+              required
+            ></textarea>
           </div>
+
           <button type="submit" class="btn btn-gold w-100">
             <i class="fas fa-paper-plane"></i> Enviar mensaje
           </button>
+
         </form>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
@@ -406,6 +437,13 @@
     });
   </script>
 
+<!-- Mensaje flotante de confirmación -->
+<div id="popup-confirmacion" class="popup-oculto">
+  <div class="popup-contenido">
+    <i class="fas fa-paper-plane icono"></i>
+    <p class="mensaje-texto">¡Gracias por contactarnos! <br>Tu mensaje fue enviado correctamente.</p>
+  </div>
+</div>
 
 </body>
 </html>
