@@ -788,3 +788,204 @@ html, body {
     opacity: 1;
   }
 }
+
+/* Dropdowns se abren con hover en desktop */
+@media (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Nueva sección: Servicios Arquitectónicos */
+.servicios-arquitectonicos {
+  background-color: #dbd8d899; /* Gris claro */
+}
+
+.servicios-arquitectonicos .service-item-arq {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer; /* Para indicar que es clickeable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicios-arquitectonicos .service-item-arq:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.servicios-arquitectonicos .service-item-arq i {
+  color: var(--gold-dark); /* Dorado oscuro */
+}
+
+.servicios-arquitectonicos .service-item-arq h5 {
+  color: var(--gold-dark); /* Dorado oscuro */
+  margin-bottom: 10px;
+}
+
+.servicios-arquitectonicos .service-item-arq p {
+  color: #000000; /* Negro */
+  font-size: 0.95rem;
+}
+/* Hover para tarjetas arquitectónicas */
+.service-card {
+  height: 300px; /* Altura fija para todas las tarjetas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.service-card .description {
+  opacity: 0; /* Oculta la descripción por defecto en desktop */
+  font-size: 0.4rem; /* 🔹 Letra más pequeña (antes 0.7rem) */
+  line-height: 1; /* 🔹 Reduce un poco el espaciado entre líneas */
+  transition: opacity 2s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+
+.service-card:hover .description {
+  opacity: 1;
+}
+
+.service-card:hover h4 {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover i {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Para móviles: muestra la descripción siempre visible */
+@media (max-width: 767px) {
+  .service-card .description {
+    opacity: 1;
+    position: static;
+    transform: none;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.5rem; /* 🔹 Aún más pequeña en móviles */
+    line-height: 1.2;
+  }
+
+  .service-card {
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .service-card h4,
+  .service-card i {
+    display: block;
+  }
+}
+
+/* Estilos para la sección BIM */
+#seccion-bim .icon svg {
+  color: var(--gold-dark); /* Dorado oscuro para íconos SVG */
+}
+
+#seccion-bim .card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+}
+
+#seccion-bim .btn-outline-gold {
+  border-color: var(--gold-dark);
+  color: var(--gold-dark);
+}
+
+#seccion-bim .btn-outline-gold:hover {
+  background-color: var(--gold-dark);
+  color: white;
+}
+
+#seccion-bim .divider {
+  height: 2px;
+  background-color: var(--gold-dark);
+  margin: 40px 0;
+}
+
+/* =============================
+   POPUP DE CONFIRMACIÓN Y ERRORES
+============================= */
+#popup-confirmacion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 9999;
+}
+
+#popup-confirmacion.activo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-contenido {
+  background-color: #0b0b0b;
+  border: 2px solid var(--gold-dark);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--white);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  animation: popupScale 0.4s ease;
+}
+
+.popup-contenido .icono {
+  font-size: 2.5rem;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+}
+
+.popup-contenido .mensaje-texto {
+  font-size: 1.1rem;
+  color: var(--gold-light);
+}
+
+/* Estilos para popup de ERROR */
+#popup-confirmacion.error .popup-contenido {
+  border-color: #dc3545; /* Rojo para error */
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.3); /* Sombra roja */
+}
+
+#popup-confirmacion.error .popup-contenido .icono {
+  color: #dc3545; /* Ícono rojo */
+}
+
+#popup-confirmacion.error .popup-contenido .mensaje-texto {
+  color: #dc3545; /* Texto rojo */
+}
+
+/* Animación de entrada */
+@keyframes popupScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
