@@ -1,5 +1,3 @@
-
-
 // Scroll suave en la navegación
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -49,7 +47,7 @@ if (menuBtn && sideMenu) {
   });
 }
 
-// Toggle para Servicios Legales
+// Toggle para Servicios Legales (solo este, con las nuevas tarjetas)
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtnLegales = document.getElementById("toggle-servicios-legales");
   const containerLegales = document.getElementById("servicios-legales-container");
@@ -57,9 +55,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const serviciosLegalesExtra = `
     <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="consultoria-empresarial">
-        <i class="fas fa-briefcase fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Consultoría Empresarial</h4>
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="junta-propietarios">
+        <i class="fas fa-users fa-3x text-gold mb-3"></i>
+        <h4 class="fw-bold mb-2">Junta de Propietarios</h4>
+      </div>
+    </div>
+
+    <div class="col-md-4 servicio-extra">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="formalizacion-legalizacion">
+        <i class="fas fa-file-signature fa-3x text-gold mb-3"></i>
+        <h4 class="fw-bold mb-2">Formalización y Legalización de Edificaciones</h4>
+      </div>
+    </div>
+
+    <div class="col-md-4 servicio-extra">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="saneamiento-fisico-legal">
+        <i class="fas fa-home fa-3x text-gold mb-3"></i>
+        <h4 class="fw-bold mb-2">Saneamiento físico legal de inmuebles y proyectos</h4>
       </div>
     </div>
   `;
@@ -74,44 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("#servicios-legales-container .servicio-extra").forEach(el => el.remove());
         toggleBtnLegales.textContent = "Mostrar más servicios legales";
         expandedLegales = false;
-      }
-    });
-  }
-});
-
-
-// Toggle para Servicios Arquitectónicos
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtnArquitectonicos = document.getElementById("toggle-servicios-arquitectonicos");
-  const containerArquitectonicos = document.getElementById("servicios-arquitectonicos-container");
-  let expandedArquitectonicos = false;
-
-  const serviciosArquitectonicosExtra = `
-    <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="peritaje-tecnico">
-        <i class="fas fa-clipboard-check fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Peritaje Técnico</h4>
-      </div>
-    </div>
-
-    <div class="col-md-4 servicio-extra">
-      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="diseno-interior">
-        <i class="fas fa-pencil-ruler fa-3x text-gold mb-3"></i>
-        <h4 class="fw-bold mb-2">Diseño Interior</h4>
-      </div>
-    </div>
-  `;
-
-  if (toggleBtnArquitectonicos) {
-    toggleBtnArquitectonicos.addEventListener("click", () => {
-      if (!expandedArquitectonicos) {
-        containerArquitectonicos.insertAdjacentHTML("beforeend", serviciosArquitectonicosExtra);
-        toggleBtnArquitectonicos.textContent = "Mostrar menos servicios arquitectónicos";
-        expandedArquitectonicos = true;
-      } else {
-        document.querySelectorAll("#servicios-arquitectonicos-container .servicio-extra").forEach(el => el.remove());
-        toggleBtnArquitectonicos.textContent = "Mostrar más servicios arquitectónicos";
-        expandedArquitectonicos = false;
       }
     });
   }
@@ -149,14 +123,14 @@ document.addEventListener("DOMContentLoaded", function() {
       const card = e.target.closest('.service-card');
       const serviceId = card.getAttribute('data-service');
       if (serviceId) {
-        window.location.href = `service-detail.html?service=${serviceId}`;
+        window.location.href = `${serviceId}.html`; // Redirige a página específica (ej. asesoria-legal.html)
       }
     }
   });
 });
 
 // ======================================================
-// FORMULARIO DE CONTACTO - POPUP DE CONFIRMACIÓN
+// FORMULARIO DE CONTACTO - POPUP DE CONFIRMACIÓN Y ERRORES
 // ======================================================
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".contact-form");
@@ -172,18 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const mensaje = form.querySelector('textarea[name="mensaje"]').value.trim();
 
       if (nombre.length === 0 || nombre.length > 50) {
-        alert("⚠️ El nombre debe tener entre 1 y 50 caracteres.");
+        mostrarPopupError(" El nombre debe tener entre 1 y 50 caracteres.");
         return;
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(correo)) {
-        alert("⚠️ Ingresa un correo electrónico válido.");
+        mostrarPopupError("Ingresa un correo electrónico válido.");
         return;
       }
 
       if (mensaje.length === 0 || mensaje.length > 500) {
-        alert("⚠️ El mensaje debe tener entre 1 y 500 caracteres.");
+        mostrarPopupError(" El mensaje debe tener entre 1 y 500 caracteres.");
         return;
       }
 
@@ -196,25 +170,96 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (response.ok) {
-          mostrarPopup(); // Mostrar el popup
+          mostrarPopupExito(); // Mostrar popup de éxito
           form.reset();
         } else {
-          alert("❌ Ocurrió un error al enviar el mensaje. Intenta nuevamente.");
+          mostrarPopupError("Ocurrió un error al enviar el mensaje. Intenta nuevamente.");
         }
       } catch (error) {
-        alert("⚠️ Error de conexión. Verifica tu internet e intenta otra vez.");
+        mostrarPopupError(" Error de conexión. Verifica tu internet e intenta otra vez.");
       }
     });
   }
 
-  // -------- POPUP DE CONFIRMACIÓN --------
-  function mostrarPopup() {
+  // -------- POPUP DE ÉXITO --------
+  function mostrarPopupExito() {
+    popup.classList.remove("error"); // Asegura que no tenga clase de error
     popup.classList.add("activo");
+    popup.querySelector(".icono").className = "fas fa-paper-plane icono"; // Ícono de éxito
+    popup.querySelector(".mensaje-texto").textContent = "¡Gracias por contactarnos! Tu mensaje fue enviado correctamente.";
 
     // Oculta el popup después de 5 segundos
     setTimeout(() => {
       popup.classList.remove("activo");
-    }, 5000);
+    }, 2000);
+  }
+
+  // -------- POPUP DE ERROR --------
+  function mostrarPopupError(mensaje) {
+    popup.classList.add("error"); // Agrega clase para estilos de error
+    popup.classList.add("activo");
+    popup.querySelector(".icono").className = "fas fa-exclamation-triangle icono"; // Ícono de error
+    popup.querySelector(".mensaje-texto").textContent = mensaje;
+
+    // Oculta el popup después de 5 segundos
+    setTimeout(() => {
+      popup.classList.remove("activo", "error");
+    }, 2000);
   }
 });
 
+// Redirigir al click en ítems de servicios arquitectónicos
+document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.service-item-arq')) {
+      const item = e.target.closest('.service-item-arq');
+      const serviceId = item.getAttribute('data-service');
+      if (serviceId) {
+        window.location.href = `${serviceId}.html`; // Redirige a página específica
+      }
+    }
+  });
+});
+
+// Toggle para Servicios Arquitectónicos
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtnArquitectonicos = document.getElementById("toggle-servicios-arquitectonicos");
+  const containerArquitectonicos = document.getElementById("servicios-arquitectonicos-container");
+  let expandedArquitectonicos = false;
+
+  const serviciosArquitectonicosExtra = `
+    <div class="col-md-4 servicio-extra">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="supervision-gestion">
+        <i class="fas fa-hammer fa-3x text-gold mb-3"></i>
+        <h4 class="fw-bold mb-2 text-gold">Supervisión y Gestión de Proyectos</h4>
+        <p class="description text-justify text-light">
+          Aseguramos el correcto desarrollo de las obras durante su ejecución: Supervisión técnica en obra. Control de calidad de materiales y verificación del cumplimiento normativo. Asesoría en procesos de licitación pública y privada. Elaboración de cronogramas, presupuestos y metrados arquitectónicos.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4 servicio-extra">
+      <div class="service-card p-4 bg-dark text-light rounded-4 shadow-lg h-100" data-service="arquitectura-interior">
+        <i class="fas fa-pencil-ruler fa-3x text-gold mb-3"></i>
+        <h4 class="fw-bold mb-2 text-gold">Arquitectura Interior y Remodelaciones</h4>
+        <p class="description text-justify text-light">
+          Creamos espacios funcionales, modernos y adaptados a las necesidades de cada cliente: Diseño interior para viviendas, oficinas y comercios. Proyectos de remodelación y reacondicionamiento arquitectónico. Integración de materiales locales, sistemas modulares y soluciones sostenibles.
+        </p>
+      </div>
+    </div>
+  `;
+
+  if (toggleBtnArquitectonicos) {
+    toggleBtnArquitectonicos.addEventListener("click", () => {
+      if (!expandedArquitectonicos) {
+        containerArquitectonicos.insertAdjacentHTML("beforeend", serviciosArquitectonicosExtra);
+        toggleBtnArquitectonicos.textContent = "Mostrar menos servicios arquitectónicos";
+        expandedArquitectonicos = true;
+      } else {
+        document.querySelectorAll("#servicios-arquitectonicos-container .servicio-extra").forEach(el => el.remove());
+        toggleBtnArquitectonicos.textContent = "Mostrar más servicios arquitectónicos";
+        expandedArquitectonicos = false;
+      }
+    });
+  }
+});
