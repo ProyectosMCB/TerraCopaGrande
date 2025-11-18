@@ -989,3 +989,48 @@ html, body {
     opacity: 1;
   }
 }
+
+/* ====== SECCIÓN NOSOTROS ====== */
+
+/* Contenedor general */
+#nosotros p {
+  line-height: 1.5;
+  font-size: 18px;
+  margin-bottom: 18px;
+  text-align: justify;
+  color: #333;
+}
+
+/* Título principal */
+#nosotros .display-6 {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #8c8424 !important;
+  letter-spacing: 0.5px;
+  margin-bottom: 35px !important;
+  position: relative; /* Necesario para la comilla */
+  padding-left: 20px; /* Espacio para que no toque el texto */
+}
+
+/* Comilla decorativa grande (solo a la izquierda del título) */
+#nosotros .display-6::before {
+  content: "“";
+  position: absolute;
+  font-size: 85px; /* Tamaño más elegante, no estorba */
+  color: rgba(0, 0, 0, 0.13); /* Comilla suave y semi-transparente */
+  left: -10px;
+  top: -20px;
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+
+/* Cursiva solo para los párrafos que contienen textos entre comillas */
+#nosotros p:nth-of-type(1),
+#nosotros p:nth-of-type(4) {
+  font-style: italic;
+}
+/* Título más a la derecha y sin separación excesiva entre letras */
+#nosotros .display-6 {
+  padding-left: 45px !important;  /* Mueve el título */
+  letter-spacing: 0 !important;   /* Quita la separación entre letras */
+}
